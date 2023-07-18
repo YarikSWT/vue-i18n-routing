@@ -256,7 +256,7 @@ function extendVueI18n(vueI18n: VueI18n, hook?: ExtendVueI18nHook): void {
   hook && properties.push(hook(composer))
   for (const property of properties) {
     for (const [key, descriptor] of Object.entries(property)) {
-      Object.defineProperty(vueI18n, key, descriptor)
+      Object.defineProperty(vueI18n, key, { ...descriptor, configurable: true })
     }
   }
 }
